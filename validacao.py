@@ -6,12 +6,9 @@ import sys
 import glob
 
 
-
-from matplotlib import pyplot as plt
-from skimage.morphology import skeletonize
-from scipy.signal import find_peaks
 from pathlib import Path
 from PIL import Image, ImageDraw, ImageFont
+
 #################################################
 def colorDec(cor,canBlack = True):
 
@@ -169,7 +166,6 @@ def main(img_path):
     radius = cv2.distanceTransform(mask, cv2.DIST_L2, 5).max()
 
     L =int( radius if radius%2 > 0 else radius+ 1 )
-    print(L)
 
     kernel = cv2.getStructuringElement(
         cv2.MORPH_RECT,
@@ -412,7 +408,6 @@ def main(img_path):
         ], dtype=np.float32))
 
     corFaixas = []
-    print(colors2)
     for cor in colors2:
 
         corFaixas.append(colorDec(cor))
